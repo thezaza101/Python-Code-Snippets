@@ -31,6 +31,7 @@ bld/
 [Dd]ata/
 [Dd]atasets/
 [Oo]utput/
+dc_notebook/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
