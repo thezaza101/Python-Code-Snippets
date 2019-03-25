@@ -8,6 +8,7 @@ Created on Tue Mar 19 09:15:01 2019
 
 # Load libraries
 import pandas as pd
+import numpy as np
 from sklearn import preprocessing # Import the preprocessing module
 from sklearn.model_selection import train_test_split # Import train_test_split function
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
@@ -56,6 +57,24 @@ fpp = fp/total
 fnp = fn/total
 tpp = tp/total
 
+
+results = {
+       "Model": "Decision tree",
+       "Accuracy": acc,
+       "True positive": tpp,
+       "True negitive": tnp,
+       "False positive": fpp,
+       "False negitive": fnp,
+       "AUC": auc,
+       "Recall": rec,
+       "precision": pre,
+       "F1": f1s
+}
+resultsDf = pd.DataFrame.from_dict(results,orient='index')
+
+print(resultsDf)
+
+'''
 print("Accuracy:\t",acc)
 print("True positive:\t",tpp)
 print("True negitive:\t",tnp)
@@ -65,3 +84,4 @@ print("AUC:\t",auc)
 print("Recall:\t",rec)
 print("precision:\t",pre)
 print("F1:\t",f1s)
+'''

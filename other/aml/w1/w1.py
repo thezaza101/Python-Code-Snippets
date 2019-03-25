@@ -1,3 +1,4 @@
+# Required for running in VSCode
 import os
 data_path =  os.path.abspath(os.path.join('other','aml','w1','datasets'))
 
@@ -31,13 +32,13 @@ plt.scatter(X, Y, marker = "x")
 ### Annotations
 plt.title("Sales Price vs. Living Area (excl. basement)")
 plt.xlabel("GrLivArea")
-plt.ylabel("SalePrice");
+plt.ylabel("SalePrice")
 
 
 ### price v. year
 ### Using Pandas
 
-data.plot('YearBuilt', 'SalePrice', kind = 'scatter', marker = 'x');
+data.plot('YearBuilt', 'SalePrice', kind = 'scatter', marker = 'x')
 
 ### GRADED
 ### Build a function that takes as input a matrix
@@ -174,13 +175,13 @@ reg_x = np.linspace(min_X, max_X, 1000)
 ### Use the equation for our line to calculate y values
 reg_y = weights[0][0] + weights[1][0] * reg_x
 
-plt.plot(reg_x, reg_y, color='#58b970', label='Regression Line')
+'''plt.plot(reg_x, reg_y, color='#58b970', label='Regression Line')
 plt.scatter(X, Y, c='k', label='Data')
 
 plt.xlabel('GrLivArea')
 plt.ylabel('SalePrice')
 plt.legend()
-plt.show()
+plt.show()'''
 
 # #### Calculating RMSE
 
