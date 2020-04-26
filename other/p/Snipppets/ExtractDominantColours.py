@@ -89,16 +89,15 @@ def processIm(Im, k=3,s=0,p=5):
     size_y = Im.shape[0]/p
     dat = averageImList(GridIm(Im,math.ceil(Im.shape[1]/size_y),math.ceil(size_y)))
     deet = np.concatenate([dat[i][0] for i in range(len(dat))])
-    deet = deet[[rgb_to_hsv(val[0],val[1],val[2])[1] >= s for val in deet]]
+    # Ucomment this line to also filter by saturation.. highter value of s will result in more vivid colors 
+    #deet = deet[[rgb_to_hsv(val[0],val[1],val[2])[1] >= s for val in deet]]
     kmeans = KMeans(n_clusters=k, random_state=0).fit(deet)
     xx = pd.DataFrame(kmeans.cluster_centers_).astype('int32').T
     return [[[list(xx[:][i]) for i in range(k)]]]
 
-
-
 while True:
     image = getFrame()
-    cols = sorted(processIm(image,10,0,5))
+    cols = sorted(processIm(image,10,0,4))
     updateOutput(image,cols)
 
 camera.release()
