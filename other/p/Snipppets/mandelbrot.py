@@ -32,22 +32,14 @@ def get_col(args):
         result[0, ix] = color
     return result
 
-def numberName(n):
-    # make large numbers look good
-    n = float(n)
-    millidx = max(0,min(3,
-                        int(math.floor(0 if n == 0 else math.log10(abs(n))/3))))
-
-    return '{:.0f}{}'.format(n / 10**(3 * millidx), ['',' Thousand',' Million',' Billion',' Trillion'][millidx])
-
 if __name__ == '__main__':
     
     height = int(sys.argv[1])
     width = int(height * 1.5)
-    print(f'Attempting to image of size {width} x {height}. This will result in a {numberName(width*height)} pixel image!')
+    print(f'Attempting to image of size {width} x {height}. This will result in a {'{:,}'.format(width*height)} pixel image!')
     max_iterations = 255    
     result = np.zeros((height, width))
-    processes = 30
+    processes = int(sys.argv[2])
     po = Pool(processes)    
     iy = np.arange(height)
     test = po.map_async(get_col, zip(iy, repeat(width), repeat(height), repeat(max_iterations) )).get()
@@ -58,5 +50,5 @@ if __name__ == '__main__':
     mandelbrot = np.clip(mandelbrot*255, 0, 255).astype(np.uint8)
     mandelbrot = Image.fromarray(mandelbrot)
     
-    mandelbrot.save(f'{sys.argv[2]}.png')
-    print(f'saved {sys.argv[2]}.png')
+    mandelbrot.save(f'{sys.argv[3]}.png')
+    print(f'saved {sys.argv[3]}.png')
