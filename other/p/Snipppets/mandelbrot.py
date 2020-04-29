@@ -36,7 +36,8 @@ if __name__ == '__main__':
     
     height = int(sys.argv[1])
     width = int(height * 1.5)
-    print(f'Attempting to image of size {width} x {height}. This will result in a {'{:,}'.format(width*height)} pixel image!')
+    print(f'Attempting to image of size {width} x {height}. This will result in a {width*height} pixel image!')
+    input("Press any to continue, or Control + C to quit...")
     max_iterations = 255    
     result = np.zeros((height, width))
     processes = int(sys.argv[2])
